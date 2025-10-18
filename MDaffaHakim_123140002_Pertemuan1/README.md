@@ -128,9 +128,10 @@ Validasi yang diterapkan meliputi:
 
 Jika terdapat kesalahan input, pesan error akan ditampilkan di bawah field yang bermasalah dan field tersebut akan ditandai dengan border berwarna merah. Proses penyimpanan data tidak akan dilanjutkan hingga semua input valid.
 
-## Informasi Pengembang
+## Informasi Pembuat
 
-- Nama: [Nama Lengkap]
-- NIM: [Nomor Induk Mahasiswa]
-- Mata Kuliah: Pemrograman Web
-- Dosen Pengampu: [Nama Dosen]
+- Nama: [Muhammad Daffa Hakim Matondang]
+- NIM: [123140002]
+- Mata Kuliah: Pengembangan Aplikasi Web RB
+- Dosen Pengampu: [Muhammad Habib Algifari, S.Kom., M.TI.]
+- Asisten Praktikum : [Bang Ahmad Fadillah]
