@@ -17,17 +17,17 @@ Aplikasi Manajemen Tugas Mahasiswa adalah aplikasi berbasis web yang dirancang u
 ## Screenshot Aplikasi
 
 ### Tampilan Dashboard
-![Dashboard](dashboard.png)
+![Dashboard](screenshots/dashboard.png)
 
 Dashboard menampilkan statistik tugas dan daftar semua tugas yang telah dibuat.
 
 ### Form Input Tugas
-![Form Modal](form.png)
+![Form Modal](screenshots/form.png)
 
 Form untuk menambahkan atau mengedit tugas dilengkapi dengan validasi input.
 
 ### Fitur Filter dan Pencarian
-![Filter](filter.png)
+![Filter](screenshots/filter.png)
 
 Pengguna dapat memfilter tugas berdasarkan status dan melakukan pencarian secara real-time.
 
