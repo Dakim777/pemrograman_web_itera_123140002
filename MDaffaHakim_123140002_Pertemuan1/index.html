@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aplikasi Manajemen Tugas Mahasiswa</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        
+        <div class="header">
+            <h1>📚 Manajemen Tugas Mahasiswa</h1>
+            <p>Kelola aktivitas akademik Anda dengan mudah dan terorganisir</p>
+        </div>
+
+        
+        <div class="stats-container">
+            <div class="stat-card">
+                <div class="stat-label">Total Tugas</div>
+                <div class="stat-value" id="totalTasks">0</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-label">Selesai</div>
+                <div class="stat-value stat-completed" id="completedTasks">0</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-label">Belum Selesai</div>
+                <div class="stat-value stat-pending" id="pendingTasks">0</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-label">Tingkat Selesai</div>
+                <div class="stat-value stat-rate" id="completionRate">0%</div>
+            </div>
+        </div>
+
+        
+        <div class="controls">
+            <div class="search-box">
+                <input type="text" id="searchInput" placeholder="🔍 Cari tugas atau mata kuliah...">
+            </div>
+            
+            <div class="filter-buttons">
+                <button class="filter-btn active" data-filter="all">Semua</button>
+                <button class="filter-btn" data-filter="pending">Pending</button>
+                <button class="filter-btn" data-filter="completed">Selesai</button>
+            </div>
+
+            <button class="btn-add" id="btnAddTask">
+                ➕ Tambah Tugas
+            </button>
+        </div>
+
+        
+        <div class="task-list-container">
+            <h2>Daftar Tugas (<span id="taskCount">0</span>)</h2>
+            <div id="taskList" class="task-list">
+                
+            </div>
+            <div id="emptyState" class="empty-state" style="display: none;">
+                <p class="empty-message">Tidak ada tugas ditemukan</p>
+                <p class="empty-submessage">Tambahkan tugas baru atau ubah filter pencarian</p>
+            </div>
+        </div>
+    </div>
+
+    
+    <div id="modal" class="modal" style="display: none;">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 id="modalTitle">Tambah Tugas Baru</h2>
+                <button class="btn-close" id="btnCloseModal">✕</button>
+            </div>
+            
+            <div class="modal-body">
+                <div class="form-group">
+                    <label>Nama Tugas *</label>
+                    <input type="text" id="inputName" placeholder="Contoh: Membuat ERD Database">
+                    <span class="error-message" id="errorName"></span>
+                </div>
+
+                <div class="form-group">
+                    <label>Mata Kuliah *</label>
+                    <input type="text" id="inputSubject" placeholder="Contoh: Basis Data">
+                    <span class="error-message" id="errorSubject"></span>
+                </div>
+
+                <div class="form-group">
+                    <label>Deadline *</label>
+                    <input type="date" id="inputDeadline">
+                    <span class="error-message" id="errorDeadline"></span>
+                </div>
+
+                <div class="modal-buttons">
+                    <button class="btn-cancel" id="btnCancel">Batal</button>
+                    <button class="btn-submit" id="btnSubmit">Tambah</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
