@@ -96,3 +96,6 @@ Memperlihatkan keberhasilan implementasi fitur *search* yang dapat menyaring tug
 ## 📁 Struktur Folder Proyek
 
 Struktur direktori proyek dirancang untuk keterbacaan dan organisasi yang baik:
+Muhammad Daffa Hakim Matondang
+123140002
+Pemweb RB
