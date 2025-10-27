@@ -52,8 +52,17 @@ Proyek ini memanfaatkan beberapa fitur utama dari ECMAScript 6 (ES6) dan versi y
 Berikut adalah contoh tampilan antarmuka Personal Dashboard:
 
 ![Personal Dashboard Screenshot](./assets/ss1.jpg)
-*(Tangkapan Layar dari halaman dashboard yang menampilkan profil, ringkasan tugas, dan bagian "Add New Task")*
-
+ada kalender untuk tracking tugas ada tanggal berapa aja , ada profile personal , ada search , ada toggle theme , ada logo profile di pojok kanan atas, bisa ngelist tugas dari yang terlama ke yang terbaru juga , kurang lebih tampilan secara keseluruhan.
+![Fitur 1 Screenshot](./assets/ss2.jpg)
+ada fitur penambahan tugas , dan list deadline tugas
+![Fitur 2 Screenshot](./assets/ss3.jpg)
+toggle theme sudah berhasil dijalankan
+![Fitur 3 Screenshot](./assets/ss4.jpg)
+listingan tugas dari yang terlama ke baru , bisa juga sebaliknya
+![Fitur 4 Screenshot](./assets/ss5.jpg)
+ada kalender dan profile
+![Fitur 5 Screenshot](./assets/ss6.jpg)
+fitur searching nama tugas bisa dijalankan
 ---
 
 ## 📁 Struktur Folder Proyek
