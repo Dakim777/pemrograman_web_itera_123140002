@@ -80,7 +80,7 @@ Fungsi pengurutan tugas yang memungkinkan pengguna melihat daftar tugas dari yan
 ***
 
 ### Integrasi Kalender & Profil
-Menyoroti komponen kalender dan modul profil pengguna, menunjukkan informasi terpadu.
+Menyoroti komponen kalender dan modul profil pengguna, menunjukkan informasi terpadu. Adanya juga fitur coming soon "notif" di kanan bawah jika edit profile ditekan.
 
 ![Fitur 4 Screenshot](./assets/ss5.png)
 
