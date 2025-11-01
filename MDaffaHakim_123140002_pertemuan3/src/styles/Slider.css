@@ -1,0 +1,22 @@
+.slider {
+  display: flex;
+  justify-content: center;
+  gap: 40px;
+  padding: 30px;
+}
+
+.slide-item {
+  text-align: center;
+}
+
+.slide-item img {
+  width: 150px;
+  height: auto;
+  border-radius: 10px;
+  box-shadow: 0 3px 6px rgba(0,0,0,0.15);
+}
+
+.text h2 {
+  margin-top: 10px;
+  font-size: 1.2rem;
+}

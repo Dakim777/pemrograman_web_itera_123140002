@@ -1,0 +1,21 @@
+:root{
+  --accent:#6b46ff;
+  --muted:#666;
+  --bg:#fafafa;
+  --card:#fff;
+}
+*{box-sizing:border-box}
+body{
+  margin:0;
+  font-family: "Poppins", system-ui, Arial, sans-serif;
+  background:var(--bg);
+  color:#222;
+}
+main{min-height:70vh}
+a{color:inherit}
+.btn{
+  background:#111;color:#fff;border:none;padding:10px 14px;border-radius:8px;cursor:pointer;
+}
+.btn-secondary{
+  background:transparent;border:1px solid #ccc;padding:8px 12px;border-radius:8px;cursor:pointer;
+}
