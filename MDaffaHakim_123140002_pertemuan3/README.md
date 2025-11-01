@@ -5,7 +5,7 @@ NIM: 123140002
 
 ## Deskripsi proyek
 
-A small React + Vite single-page application that showcases merchandise (sticker, wristband, keychain) for a community called BUMH. The app includes product listing, product detail pages, a simple cart powered by React Context, and a checkout page. Styling is done with plain CSS located under `src/styles`.
+Aplikasi satu halaman kecil React + Vite yang menampilkan merchandise (stiker, gelang, gantungan kunci) untuk komunitas bernama BUMH. Aplikasi ini mencakup daftar produk, halaman detail produk, keranjang belanja sederhana yang didukung oleh React Context, dan halaman pembayaran. Penataan gaya dilakukan dengan CSS sederhana yang terletak di bawah `src/styles`.
 
 Proyek ini dibuat untuk tugas praktikum Pemrograman Aplikasi Web (PAW).
 
@@ -89,16 +89,7 @@ npm run preview
 
 Jika ada pertanyaan tentang proyek ini, hubungi MDaffa Hakim (NIM: 123140002).
 
-## Screenshots
 
-Untuk dokumentasi visual proyek, silakan tambahkan screenshot halaman ke folder `docs/screenshots/` (direkomendasikan ukuran ~1280x720 atau 1920x1080). Berikut contoh nama file yang disarankan:
-
-- `home.png` — tangkapan layar halaman Home
-- `products.png` — daftar produk / grid
-- `cart.png` — halaman keranjang
-- `checkout.png` — halaman checkout
-
-Berikut ini contoh tampilan (jika file ada di `docs/screenshots/`, gambar akan muncul):
 
 ### Home
 ![Home](docs/screenshots/home.png)
@@ -121,5 +112,5 @@ Halaman keranjang menampilkan semua item yang ditambahkan, kontrol kuantitas, su
 
 Halaman checkout berisi form pengisian data pengiriman dan ringkasan pesanan sebelum konfirmasi.
 
-Jika kamu ingin saya buatkan screenshot otomatis dari development server (menggunakan headless Chromium), saya bisa tambahkan skrip npm untuk itu.
+
 
