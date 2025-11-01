@@ -89,7 +89,7 @@ npm run preview
 
 Jika ada pertanyaan tentang proyek ini, hubungi MDaffa Hakim (NIM: 123140002).
 
-Aplikasi ini di-*host* di Vercel: [Lihat Aplikasi di Vercel](https://pemrograman-web-itera-123140002.vercel.app/products)
+Aplikasi ini di-*host* di Vercel: [Lihat Aplikasi di Vercel](https://pemrograman-web-itera-123140002.vercel.app/)
 
 ### Home
 ![Home](docs/screenshots/home.png)
