@@ -1,0 +1,350 @@
+# Aplikasi Manajemen Matakuliah (Pyramid)
+
+Proyek ini adalah implementasi praktikum: API CRUD sederhana untuk pengelolaan
+matakuliah menggunakan Pyramid (WSGI), SQLAlchemy (ORM) dan SQLite sebagai
+database development default. Kode ini siap untuk diadaptasi ke PostgreSQL.
+
+Fitur utama:
+- Model `Matakuliah` lengkap dengan atribut: id, kode_mk, nama_mk, sks, semester
+- Endpoint CRUD lengkap dengan validasi dan handling duplicate `kode_mk`
+- Script inisialisasi dev DB dan 3 sample data
+- Test suite (pytest + webtest) untuk memverifikasi alur CRUD
+
+Prerequisites
+- Python 3.8+ (direkomendasikan 3.10+)
+- Git (opsional)
+
+Instalasi (lokal)
+
+1. Buat virtual environment dan aktifkan
+
+```bash
+python3 -m venv .venv
+source .venv/bin/activate
+```
+
+2. Install dependensi
+
+```bash
+pip install -r requirements.txt
+```
+
+Konfigurasi database
+
+- Default development menggunakan SQLite file `dev.db`. Untuk menggunakan
+   PostgreSQL, set environment variable `DATABASE_URL`, contoh:
+
+```bash
+export DATABASE_URL=postgresql://user:password@localhost:5432/mydb
+```
+
+Inisialisasi database (dev)
+
+```bash
+python dev_db.py
+```
+
+Script ini akan membuat file `dev.db` (SQLite) dan menambahkan 3 contoh
+matakuliah jika tabel masih kosong.
+
+Menjalankan server
+
+```bash
+python run_server.py
+```
+
+Server akan berjalan pada http://localhost:6543
+
+API Endpoints
+
+Base URL: http://localhost:6543
+
+1) Get all matakuliah
+- Method: GET
+- URL: /api/matakuliah
+- Response Example:
+
+   {
+      "matakuliahs": [
+         {"id":1, "kode_mk":"IF101","nama_mk":"Algoritma dan Pemrograman","sks":3,"semester":1},
+         ...
+      ]
+   }
+
+2) Get single matakuliah
+- Method: GET
+- URL: /api/matakuliah/{id}
+- Response Example:
+
+   {"id":1, "kode_mk":"IF101","nama_mk":"Algoritma dan Pemrograman","sks":3,"semester":1}
+
+3) Create matakuliah
+- Method: POST
+- URL: /api/matakuliah
+- Request body (JSON):
+
+   {
+      "kode_mk": "IF101",
+      "nama_mk": "Algoritma dan Pemrograman",
+      "sks": 3,
+      "semester": 1
+   }
+
+- Success response: created resource data
+- Error responses:
+   - 400 Missing field: FIELD
+   - 400 kode_mk must be unique
+
+4) Update matakuliah
+- Method: PUT
+- URL: /api/matakuliah/{id}
+- Request body (JSON): can be partial (kode_mk, nama_mk, sks, semester)
+
+5) Delete matakuliah
+- Method: DELETE
+- URL: /api/matakuliah/{id}
+
+Contoh curl
+
+Create:
+```bash
+curl -X POST -H "Content-Type: application/json" -d '{"kode_mk":"IF200","nama_mk":"Contoh","sks":3,"semester":2}' http://localhost:6543/api/matakuliah
+```
+
+Get all:
+```bash
+curl http://localhost:6543/api/matakuliah
+```
+
+Update:
+```bash
+curl -X PUT -H "Content-Type: application/json" -d '{"nama_mk":"Updated"}' http://localhost:6543/api/matakuliah/1
+```
+
+Delete:
+```bash
+curl -X DELETE http://localhost:6543/api/matakuliah/1
+```
+
+Testing
+-------
+
+Project sudah dilengkapi test suite minimal yang memverifikasi alur CRUD
+menggunakan pytest dan webtest. Test berada di `tests/test_api.py`.
+
+1) Pastikan virtualenv aktif dan dependensi terpasang
+
+```bash
+source .venv/bin/activate
+pip install -r requirements.txt
+```
+
+2) Jalankan seluruh test
+
+```bash
+pytest -q
+```
+
+Output yang diharapkan: semua test lulus. Contoh output singkat:
+
+```
+1 passed
+```
+
+Jika test gagal, lihat pesan error untuk detail. Test membuat SQLite database
+sementara pada folder temporer sehingga tidak akan mengganggu `dev.db`.
+
+Pengumpulan
+-----------
+
+Ikuti format pengumpulan praktikum:
+- Buat repository GitHub dengan nama: `pemrograman_web_itera_[NIM]`
+- Di dalam repo buat folder: `MDaffaHakim_123140002_pertemuan6` dan masukkan
+   seluruh file proyek.
+
+Checklist pengumpulan:
+- [ ] Source code lengkap
+- [ ] README.md (instruksi & dokumentasi API)
+- [ ] Screenshot/hasil testing (opsional)
+
+Catatan teknis & rekomendasi
+- Saat produksi/pengumpulan, disarankan menggunakan PostgreSQL. Ubah
+   `DATABASE_URL` dan jalankan migrasi Alembic (saya bisa bantu membuat
+   konfigurasi Alembic bila diperlukan).
+- Saya sudah memperbaiki penggunaan SQLAlchemy agar sesuai versi 2.x.
+
+Alembic (migrasi database)
+---------------------------
+
+Projekt ini sudah menyertakan konfigurasi Alembic sederhana di folder `alembic/`.
+Langkah cepat:
+
+1. Pastikan virtualenv aktif dan dependensi terpasang (alembic ada di `requirements.txt`)
+
+```bash
+source .venv/bin/activate
+pip install -r requirements.txt
+```
+
+2. Pastikan `DATABASE_URL` di-set apabila ingin memakai DB selain default `dev.db`:
+
+```bash
+export DATABASE_URL=postgresql://user:password@localhost:5432/mydb
+```
+
+3. Jalankan migration head (membuat tabel sesuai revisi awal):
+
+```bash
+alembic upgrade head -c alembic.ini
+```
+
+4. Membuat revisi baru setelah mengubah model:
+
+```bash
+alembic revision --autogenerate -m "deskripsi perubahan" -c alembic.ini
+alembic upgrade head -c alembic.ini
+```
+
+Catatan: `alembic.ini` dan `alembic/env.py` sudah disesuaikan agar membaca `DATABASE_URL`
+dari environment variable. Jika ingin konfigurasi lebih lengkap (contoh: multiple
+env, hook SQLAlchemy URL dari file settings), saya bisa tambahkan.
+
+Dokumentasi API (format tugas)
+-----------------------------
+
+Model data (contoh JSON):
+
+```json
+{
+   "id": 1,
+   "kode_mk": "IF101",
+   "nama_mk": "Algoritma",
+   "sks": 3,
+   "semester": 1
+}
+```
+
+Endpoint:
+
+| Method | URL | Description |
+|:------:|:---:|:-----------:|
+| GET | /api/matakuliah | Mengambil semua data matakuliah |
+| GET | /api/matakuliah/{id} | Mengambil detail satu matakuliah |
+| POST | /api/matakuliah | Menambahkan matakuliah baru |
+| PUT | /api/matakuliah/{id} | Mengupdate data matakuliah |
+| DELETE | /api/matakuliah/{id} | Menghapus data matakuliah |
+
+Testing (contoh perintah curl):
+
+Create :
+```bash
+curl -X POST http://localhost:6543/api/matakuliah \
+   -H "Content-Type: application/json" \
+   -d '{"kode_mk": "IF202", "nama_mk": "Sistem Operasi", "sks": 3, "semester": 4}'
+```
+
+Read all :
+```bash
+curl -X GET http://localhost:6543/api/matakuliah
+```
+
+Read by id :
+```bash
+curl -X GET http://localhost:6543/api/matakuliah/1
+```
+
+Update :
+```bash
+curl -X PUT http://localhost:6543/api/matakuliah/1 \
+   -H "Content-Type: application/json" \
+   -d '{"sks": 6, "nama_mk": "Sistem Operasi"}'
+```
+
+Delete :
+```bash
+curl -X DELETE http://localhost:6543/api/matakuliah/1
+```
+
+Gambar/penjelasan tambahan: kamu bisa menaruh screenshot hasil curl atau Postman di folder `docs/` jika diperlukan untuk tugas.
+
+Screenshot untuk dokumentasi
+---------------------------
+
+Saya sudah menyiapkan placeholder gambar di folder `docs/`. Silakan ambil screenshot hasil test di terminal atau Postman dan ganti file-file berikut:
+
+- `docs/screenshot_get_all.png` — hasil `GET /api/matakuliah`
+- `docs/screenshot_get_one.png` — hasil `GET /api/matakuliah/1`
+- `docs/screenshot_create.png` — hasil `POST /api/matakuliah` (created)
+- `docs/screenshot_update_delete.png` — hasil `PUT /api/matakuliah/1` dan `DELETE /api/matakuliah/1`
+
+Ganti file-file placeholder tersebut dengan screenshot asli (format PNG). Jika sudah, commit perubahan sehingga file screenshot termasuk di repository untuk pengumpulan.
+
+Contoh response (sample)
+------------------------
+
+1) GET /api/matakuliah (200 OK)
+
+```json
+{
+   "matakuliahs": [
+      {"id": 1, "kode_mk": "IF101", "nama_mk": "Algoritma dan Pemrograman", "sks": 3, "semester": 1},
+      {"id": 2, "kode_mk": "IF102", "nama_mk": "Struktur Data", "sks": 3, "semester": 2}
+   ]
+}
+```
+
+2) GET /api/matakuliah/1 (200 OK)
+
+```json
+{
+   "id": 1,
+   "kode_mk": "IF101",
+   "nama_mk": "Algoritma dan Pemrograman",
+   "sks": 3,
+   "semester": 1
+}
+```
+
+3) POST /api/matakuliah (200 OK)
+
+```json
+{
+   "created": {"id": 3, "kode_mk": "IF202", "nama_mk": "Sistem Operasi", "sks": 3, "semester": 4}
+}
+```
+
+4) PUT /api/matakuliah/1 (200 OK)
+
+```json
+{
+   "updated": {"id": 1, "kode_mk": "IF101", "nama_mk": "Sistem Operasi", "sks": 6, "semester": 1}
+}
+```
+
+5) DELETE /api/matakuliah/1 (200 OK)
+
+```json
+{"deleted": true}
+```
+
+API Endpoints
+
+1. Get all
+   - GET /api/matakuliah
+   - Response: {"matakuliahs": [ ... ]}
+
+2. Get one
+   - GET /api/matakuliah/{id}
+   - Response: {"id":..., "kode_mk":..., "nama_mk":..., "sks":..., "semester":...}
+
+3. Create
+   - POST /api/matakuliah
+   - Body JSON: {"kode_mk": "IF101", "nama_mk": "Name", "sks": 3, "semester": 1}
+
+4. Update
+   - PUT /api/matakuliah/{id}
+   - Body JSON: partial or full fields to update
+
+5. Delete
+   - DELETE /api/matakuliah/{id}
+

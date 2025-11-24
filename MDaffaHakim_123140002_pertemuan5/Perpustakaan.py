@@ -8,7 +8,7 @@ from typing import List, Optional
 class LibraryItem(ABC):
     """
     Abstract base class untuk semua item di perpustakaan.
-    Setiap item perpustakaan harus mengimplementasikan method abstract yang didefinisikan di sini.
+
     """
     
     def __init__(self, item_id: str, title: str, author: str, year: int):

@@ -1,0 +1,7 @@
+pyramid==2.0
+waitress
+SQLAlchemy
+alembic
+psycopg2-binary
+webtest
+pytest
