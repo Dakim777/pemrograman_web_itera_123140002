@@ -23,86 +23,28 @@ python3 -m venv .venv
 source .venv/bin/activate
 ```
 
-2. Install dependensi
+Testing — screenshot (gunakan untuk dokumentasi)
+-----------------------------------------------
 
-```bash
-pip install -r requirements.txt
-```
+Berikut screenshot dari pengujian API. Silakan ambil screenshot dari terminal/Postman dan ganti file-file di folder `docs/` jika perlu.
 
-Konfigurasi database
+GET all (daftar matakuliah):
 
-- Default development menggunakan SQLite file `dev.db`. Untuk menggunakan
-   PostgreSQL, set environment variable `DATABASE_URL`, contoh:
+![GET all](docs/screenshot_get_all.png)
 
-```bash
-export DATABASE_URL=postgresql://user:password@localhost:5432/mydb
-```
+GET one (detail matakuliah):
 
-Inisialisasi database (dev)
+![GET one](docs/screenshot_get_one.png)
 
-```bash
-python dev_db.py
-```
+Create (POST):
 
-Script ini akan membuat file `dev.db` (SQLite) dan menambahkan 3 contoh
-matakuliah jika tabel masih kosong.
+![Create](docs/screenshot_create.png)
 
-Menjalankan server
+Update & Delete (PUT / DELETE):
 
-```bash
-python run_server.py
-```
+![Update/Delete](docs/screenshot_update_delete.png)
 
-Server akan berjalan pada http://localhost:6543
 
-API Endpoints
-
-Base URL: http://localhost:6543
-
-1) Get all matakuliah
-- Method: GET
-- URL: /api/matakuliah
-- Response Example:
-
-   {
-      "matakuliahs": [
-         {"id":1, "kode_mk":"IF101","nama_mk":"Algoritma dan Pemrograman","sks":3,"semester":1},
-         ...
-      ]
-   }
-
-2) Get single matakuliah
-- Method: GET
-- URL: /api/matakuliah/{id}
-- Response Example:
-
-   {"id":1, "kode_mk":"IF101","nama_mk":"Algoritma dan Pemrograman","sks":3,"semester":1}
-
-3) Create matakuliah
-- Method: POST
-- URL: /api/matakuliah
-- Request body (JSON):
-
-   {
-      "kode_mk": "IF101",
-      "nama_mk": "Algoritma dan Pemrograman",
-      "sks": 3,
-      "semester": 1
-   }
-
-- Success response: created resource data
-- Error responses:
-   - 400 Missing field: FIELD
-   - 400 kode_mk must be unique
-
-4) Update matakuliah
-- Method: PUT
-- URL: /api/matakuliah/{id}
-- Request body (JSON): can be partial (kode_mk, nama_mk, sks, semester)
-
-5) Delete matakuliah
-- Method: DELETE
-- URL: /api/matakuliah/{id}
 
 Contoh curl
 
@@ -264,87 +206,4 @@ Delete :
 ```bash
 curl -X DELETE http://localhost:6543/api/matakuliah/1
 ```
-
-Gambar/penjelasan tambahan: kamu bisa menaruh screenshot hasil curl atau Postman di folder `docs/` jika diperlukan untuk tugas.
-
-Screenshot untuk dokumentasi
----------------------------
-
-Saya sudah menyiapkan placeholder gambar di folder `docs/`. Silakan ambil screenshot hasil test di terminal atau Postman dan ganti file-file berikut:
-
-- `docs/screenshot_get_all.png` — hasil `GET /api/matakuliah`
-- `docs/screenshot_get_one.png` — hasil `GET /api/matakuliah/1`
-- `docs/screenshot_create.png` — hasil `POST /api/matakuliah` (created)
-- `docs/screenshot_update_delete.png` — hasil `PUT /api/matakuliah/1` dan `DELETE /api/matakuliah/1`
-
-Ganti file-file placeholder tersebut dengan screenshot asli (format PNG). Jika sudah, commit perubahan sehingga file screenshot termasuk di repository untuk pengumpulan.
-
-Contoh response (sample)
-------------------------
-
-1) GET /api/matakuliah (200 OK)
-
-```json
-{
-   "matakuliahs": [
-      {"id": 1, "kode_mk": "IF101", "nama_mk": "Algoritma dan Pemrograman", "sks": 3, "semester": 1},
-      {"id": 2, "kode_mk": "IF102", "nama_mk": "Struktur Data", "sks": 3, "semester": 2}
-   ]
-}
-```
-
-2) GET /api/matakuliah/1 (200 OK)
-
-```json
-{
-   "id": 1,
-   "kode_mk": "IF101",
-   "nama_mk": "Algoritma dan Pemrograman",
-   "sks": 3,
-   "semester": 1
-}
-```
-
-3) POST /api/matakuliah (200 OK)
-
-```json
-{
-   "created": {"id": 3, "kode_mk": "IF202", "nama_mk": "Sistem Operasi", "sks": 3, "semester": 4}
-}
-```
-
-4) PUT /api/matakuliah/1 (200 OK)
-
-```json
-{
-   "updated": {"id": 1, "kode_mk": "IF101", "nama_mk": "Sistem Operasi", "sks": 6, "semester": 1}
-}
-```
-
-5) DELETE /api/matakuliah/1 (200 OK)
-
-```json
-{"deleted": true}
-```
-
-API Endpoints
-
-1. Get all
-   - GET /api/matakuliah
-   - Response: {"matakuliahs": [ ... ]}
-
-2. Get one
-   - GET /api/matakuliah/{id}
-   - Response: {"id":..., "kode_mk":..., "nama_mk":..., "sks":..., "semester":...}
-
-3. Create
-   - POST /api/matakuliah
-   - Body JSON: {"kode_mk": "IF101", "nama_mk": "Name", "sks": 3, "semester": 1}
-
-4. Update
-   - PUT /api/matakuliah/{id}
-   - Body JSON: partial or full fields to update
-
-5. Delete
-   - DELETE /api/matakuliah/{id}
 
