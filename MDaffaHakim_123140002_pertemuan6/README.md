@@ -96,24 +96,6 @@ Output yang diharapkan: semua test lulus. Contoh output singkat:
 Jika test gagal, lihat pesan error untuk detail. Test membuat SQLite database
 sementara pada folder temporer sehingga tidak akan mengganggu `dev.db`.
 
-Pengumpulan
------------
-
-Ikuti format pengumpulan praktikum:
-- Buat repository GitHub dengan nama: `pemrograman_web_itera_[NIM]`
-- Di dalam repo buat folder: `MDaffaHakim_123140002_pertemuan6` dan masukkan
-   seluruh file proyek.
-
-Checklist pengumpulan:
-- [ ] Source code lengkap
-- [ ] README.md (instruksi & dokumentasi API)
-- [ ] Screenshot/hasil testing (opsional)
-
-Catatan teknis & rekomendasi
-- Saat produksi/pengumpulan, disarankan menggunakan PostgreSQL. Ubah
-   `DATABASE_URL` dan jalankan migrasi Alembic (saya bisa bantu membuat
-   konfigurasi Alembic bila diperlukan).
-- Saya sudah memperbaiki penggunaan SQLAlchemy agar sesuai versi 2.x.
 
 Alembic (migrasi database)
 ---------------------------
@@ -148,8 +130,7 @@ alembic upgrade head -c alembic.ini
 ```
 
 Catatan: `alembic.ini` dan `alembic/env.py` sudah disesuaikan agar membaca `DATABASE_URL`
-dari environment variable. Jika ingin konfigurasi lebih lengkap (contoh: multiple
-env, hook SQLAlchemy URL dari file settings), saya bisa tambahkan.
+
 
 Dokumentasi API (format tugas)
 -----------------------------
